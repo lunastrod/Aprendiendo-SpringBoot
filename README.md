@@ -76,16 +76,27 @@ MYSQL_ADDON_PORT=3306
 MYSQL_ADDON_PASSWORD=<<CONTRASEÑA>>
 ```
 
-y escribir esto en application.properties
+escribir esto en application.properties
 ```
-spring.datasource.url=jdbc:mysql://begey73bcijbj9q7igtc-mysql.services.clever-cloud.com:3306/begey73bcijbj9q7igtc?serverTimezone=UTC&useSSL=false
-spring.datasource.username=unv5oyj4qiiv2ujc
-spring.datasource.password=<<CONTRASEÑA>>
+spring.datasource.url=jdbc:mysql://${MYSQL_ADDON_HOST}:${MYSQL_ADDON_PORT}/${MYSQL_ADDON_DB}?serverTimezone=UTC&useSSL=false
+spring.datasource.username=${MYSQL_ADDON_USER}
+spring.datasource.password=${MYSQL_ADDON_PASSWORD}
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.open-in-view=false
 ```
+
+Yo he creado un perfil de ejecución para las variables de entorno, al lado del botón de ejecutar, edit configurations
+, modify options, operating system, modify environment variables, y pego lo que me dio Clever Cloud
+
+| Name                  | Value           |
+|-----------------------|-----------------|
+| MYSQL_ADDON_HOST      | begey...        |
+| MYSQL_ADDON_PASSWORD  | ZEVPz...        |
+| MYSQL_ADDON_PORT      | 3306            |
+| MYSQL_ADDON_URI       | mysql:...       |
+| MYSQL_ADDON_USER      | unv5o...        |
 
 Ahora ejecuta sin errores
 
